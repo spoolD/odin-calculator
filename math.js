@@ -1,3 +1,12 @@
+
+
+document.querySelectorAll('.number').forEach((button)=>{
+    button.addEventListener('click', ()=>{
+        console.log(button.innerText)
+    })
+})
+   
+
 function add(a,b){
     return a + b;
 };
@@ -32,8 +41,3 @@ function operate(operator, a, b){
     }
 }
 
-console.log(operate('+',2,4))
-console.log(operate('-',8, 1))
-console.log(operate('*',6, 3))
-console.log(operate('/',10,2))
-console.log(operate('w',2,4))
