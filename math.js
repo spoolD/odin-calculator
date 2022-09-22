@@ -2,9 +2,10 @@
 
 document.querySelectorAll('.number').forEach((button)=>{
     button.addEventListener('click', ()=>{
-        console.log(button.innerText)
+        display = document.getElementById('display');
+        display.innerHTML += button.innerHTML;
     })
-})
+});
    
 
 function add(a,b){
@@ -40,4 +41,5 @@ function operate(operator, a, b){
         return 'Operation Error'
     }
 }
+
 
