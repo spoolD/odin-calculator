@@ -4,6 +4,7 @@ let clearOnNext = false;
 let operator = '';
 let numFirst = '';
 let numSecond = '';
+let result = '';
 let operatorEvaluation = false;
 const display = document.getElementById('display');
 const equals = document.getElementById('equals');
@@ -46,7 +47,8 @@ document.querySelectorAll('.operator').forEach((button) => {
         }
         else{
             numSecond = display.textContent;
-            display.textContent = operate(operator, Number(numFirst), Number(numSecond));
+            result = operate(operator, Number(numFirst), Number(numSecond));
+            display.textContent = roundDisplay(result);
             clearOnNext = true;
             numFirst = display.textContent;
             operator = button.textContent;
@@ -57,9 +59,9 @@ document.querySelectorAll('.operator').forEach((button) => {
 // Equals button operation
 equals.addEventListener('click', () => {
     numSecond = display.textContent;
-    let result =  operate(operator, Number(numFirst), Number(numSecond));
+    result =  operate(operator, Number(numFirst), Number(numSecond));
     if (result !== "Operation Error"){
-        display.textContent = result;
+        display.textContent = roundDisplay(result);  
     }
     operatorEvaluation = false;
 })
@@ -72,14 +74,24 @@ allClear.addEventListener('click', () => {
     numFirst = '';
     numSecond = '';
     operatorEvaluation = false;
+    result = '';
     display.textContent = '';
 })
 dispClear = document.getElementById('display-clear');
 dispClear.addEventListener('click', () => {
     display.textContent = '';
 })
-//Decimal rounding? (11 digits total for display)
 
+//Decimal rounding function (11 digits total for display)
+function roundDisplay(value){
+    const numStr = String(value);
+    if (numStr.length > 10){
+        return value.toPrecision(10);
+    }
+    else{
+        return value
+    }
+}
 //Divide by zero error
 
 
