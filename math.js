@@ -11,6 +11,17 @@ const equals = document.getElementById('equals');
 // Update display when numbers clicked
 document.querySelectorAll('.number').forEach((button) => {
     button.addEventListener('click', ()=>{ 
+        
+        //Doesn't add more than one decimal
+        if (button.textContent === '.'){
+            if(display.textContent.includes('.')){
+                return 0;
+            }
+            else{
+                //pass
+            }
+        }
+        
         //if statement handles clearing display on next number if operation is occuring
         if (!clearOnNext){
             display.textContent += button.textContent;
@@ -26,6 +37,7 @@ document.querySelectorAll('.number').forEach((button) => {
 // On click of operator stores value, if operator already clicked evaluates first operation
 document.querySelectorAll('.operator').forEach((button) => {
     button.addEventListener('click', () => { 
+        
         if(!operatorEvaluation){
             numFirst = display.textContent;
             operator = button.textContent;
@@ -45,9 +57,31 @@ document.querySelectorAll('.operator').forEach((button) => {
 // Equals button operation
 equals.addEventListener('click', () => {
     numSecond = display.textContent;
-    display.textContent = operate(operator, Number(numFirst), Number(numSecond));
-    operator = '';
+    let result =  operate(operator, Number(numFirst), Number(numSecond));
+    if (result !== "Operation Error"){
+        display.textContent = result;
+    }
+    operatorEvaluation = false;
 })
+
+//Clear buttons
+allClear = document.getElementById('all-clear');
+allClear.addEventListener('click', () => {
+    clearOnNext = false;
+    operator = '';
+    numFirst = '';
+    numSecond = '';
+    operatorEvaluation = false;
+    display.textContent = '';
+})
+dispClear = document.getElementById('display-clear');
+dispClear.addEventListener('click', () => {
+    display.textContent = '';
+})
+//Decimal rounding? (11 digits total for display)
+
+//Divide by zero error
+
 
 // Math functions
 function add(a,b){
