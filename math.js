@@ -32,6 +32,7 @@ document.querySelectorAll('.number').forEach((button) => {
             display.textContent += button.textContent;
             clearOnNext = false;
         }
+
     })
 });
 
@@ -85,15 +86,8 @@ dispClear.addEventListener('click', () => {
 //Decimal rounding function (11 digits total for display)
 function roundDisplay(value){
     const numStr = String(value);
-    if (numStr.length > 10){
-        return value.toPrecision(10);
-    }
-    else{
-        return value
-    }
+    return (numStr.length > 10 ? value.toPrecision(10) : value);
 }
-//Divide by zero error
-
 
 // Math functions
 function add(a,b){
@@ -109,7 +103,7 @@ function multiply(a,b){
 };
 
 function divide(a,b){
-    return a / b;
+    return (b===0 ? alert('You know better than to divide by 0') : a/b);    
 }
 
 function operate(operator, a, b){
