@@ -19,13 +19,16 @@ html,body{
 
 #display{
     border: 1px solid #FFFEF2;
-    height: 30px;
+    height: 50px;
     border-radius: 5px;
     color: #FFFEF2;
     text-align: right;
     padding: 3px;
     justify-content: flex-end;
     align-items: center;
+    font-size: 18pt;
+    font-family: 'Gemunu Libre', sans-serif;
+    font-weight: 400;
     
 }
 
@@ -36,12 +39,14 @@ button {
     border-radius: 5px;
     border-width: 1px;
     width: 100%;
-    
+    font-size: 18pt;
+    font-family: 'Gemunu Libre', sans-serif;
+    font-weight: 400;
 }
 
 .number,
 .operator,
 #equals {
-    width: 30px;
+    width: 40px;
 }
 
